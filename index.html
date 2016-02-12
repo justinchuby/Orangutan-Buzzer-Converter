@@ -17,6 +17,7 @@
           return {"melody": 'Hello!', "time": "World!"};
         },
         convert: function (txt) {
+          console.log(txt);
             var notes = txt.split(",");
             for (var i = 0; i < notes.length; i++) {
                 notes[i] = notes[i].trim();
@@ -53,7 +54,7 @@
                 66:"A(6)",
                 76:"B(6)",
             };
-            for	(var j = 0; j < notes.length; j++) {
+            for (var j = 0; j < notes.length; j++) {
                 var note = notes[j];
                 // console.log(note);
                 if (note in NOTE_MAP) {
@@ -77,15 +78,19 @@
           });
         },
         
+        textAreaStyle: {
+          resize: "vertical"
+        },
+        
         render: function() {
-        return (
+          return (
             <div className="container">
-                <h1> Orangutan Buzzer Converter </h1>
-                <textarea className="form-control" rows="20" placeholder="Enter notes here" value={this.state.value} onChange={this.handleChange} />
-                <pre className="text-left">
-                //Melody:<br/>{this.state.melody} <br/>
-                //Time:<br/>{this.state.time}
-                </pre>
+              <h1> Orangutan Buzzer Converter </h1>
+              <textarea className="form-control" style={this.textAreaStyle} rows="10" placeholder="Enter notes here" value={this.state.value} onChange={this.handleChange} />
+              <pre className="text-left">
+              //Melody:<br/>{this.state.melody} <br/>
+              //Time:<br/>{this.state.time}
+              </pre>
              </div>
         );
         }
