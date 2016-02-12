@@ -17,7 +17,6 @@
           return {"melody": 'Hello!', "time": "World!"};
         },
         convert: function (txt) {
-          console.log(txt);
             var notes = txt.split(",");
             for (var i = 0; i < notes.length; i++) {
                 notes[i] = notes[i].trim();
@@ -86,11 +85,19 @@
           return (
             <div className="container">
               <h1> Orangutan Buzzer Converter </h1>
-              <textarea className="form-control" style={this.textAreaStyle} rows="10" placeholder="Enter notes here" value={this.state.value} onChange={this.handleChange} />
-              <pre className="text-left">
-              //Melody:<br/>{this.state.melody} <br/>
-              //Time:<br/>{this.state.time}
-              </pre>
+              <div className="row">
+                <div className="col-md-10 col-md-offset-1">
+                  <textarea className="form-control" style={this.textAreaStyle} rows="10" placeholder="Enter notes here" value={this.state.value} onChange={this.handleChange} />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-10 col-md-offset-1">
+                  <pre className="text-left">
+                  //Melody:<br/>{this.state.melody} <br/>
+                  //Time:<br/>{this.state.time}
+                  </pre>
+                </div>
+              </div>
              </div>
         );
         }
