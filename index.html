@@ -65,6 +65,9 @@
                         time = time.concat([NOTE_LEN - SILENT_LEN]);
                     };
                     melody = melody.concat([NOTE_MAP[note]]);
+                } else {
+                    melody = melody.concat([NOTE_MAP[0]]);
+                    time = time.concat([SILENT_LEN]);
                 };
             };
             return({"melody": melody.join(", "), "time": time.join(", ")});
