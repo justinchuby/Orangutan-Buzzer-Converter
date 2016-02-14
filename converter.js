@@ -9,8 +9,17 @@ var convert = function (txt, noteLen, silentLen) {
 var convertFromList = function (notes, noteLen, silentLen) {
     var melody = [];
     var time = [];
-    var NOTE_LEN = noteLen;
-    var SILENT_LEN = silentLen;
+    if (noteLen) {
+        var NOTE_LEN = noteLen;
+    } else {
+        NOTE_LEN = 250;
+    }
+    if (silentLen) {
+        var SILENT_LEN = silentLen;
+    } else {
+        var SILENT_LEN = 30;
+    }
+
     var NOTE_RE = /(\d)(\d?)(\-*)/;
     var NOTE_MAP = {
         "0": "SILENT_NOTE",
