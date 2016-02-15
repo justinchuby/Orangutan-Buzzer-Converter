@@ -12,7 +12,7 @@ var convertFromList = function (notes, noteLen, silentLen) {
     if (noteLen) {
         var NOTE_LEN = noteLen;
     } else {
-        NOTE_LEN = 250;
+        var NOTE_LEN = 250;
     }
     if (silentLen) {
         var SILENT_LEN = silentLen;
@@ -20,8 +20,8 @@ var convertFromList = function (notes, noteLen, silentLen) {
         var SILENT_LEN = 30;
     }
 
-    var NOTE_RE = /(\d)(\d?)(\-*)/;
-    var NOTE_MAP = {
+    const NOTE_RE = /(\d)(\d?)(\-*)/;
+    const NOTE_MAP = {
         "0": "SILENT_NOTE",
         "1": "C",
         "2": "D",
@@ -37,16 +37,16 @@ var convertFromList = function (notes, noteLen, silentLen) {
         var noteRaw = notes[j];
         console.log(noteRaw);
         var match = noteRaw.match(NOTE_RE);
-        var note = {
-            "raw": noteRaw,
-            "name": "",
-            "num": match[1],
-            "octave": match[2],
-            "tie": match[3],
-            "string": ""
-        };
 
         if (match) {
+            var note = {
+                "raw": noteRaw,
+                "name": "",
+                "num": match[1],
+                "octave": match[2],
+                "tie": match[3],
+                "string": ""
+            };
             if (note.num in NOTE_MAP) {
                 note.name = NOTE_MAP[note.num];
             } else {
