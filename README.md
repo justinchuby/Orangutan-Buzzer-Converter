@@ -1,7 +1,7 @@
 # orangutan-buzz
 Orangutan Buzzer Converter
 
-This is a simple web application that converts music notes into one of the Orangutan usable function representation.
+This is a simple web application that converts music notes into one of the Orangutan usable function representations.
 
 ## Syntax
 
