@@ -1,5 +1,5 @@
 # orangutan-buzz
-Orangutan Buzzer Converter
+[Orangutan Buzzer Converter](http://justinchuby.github.io/orangutan-buzz/)
 
 This is a simple web application that converts music notes into one of the Orangutan usable function representations.
 
@@ -20,7 +20,7 @@ would be translated to
 
 ```c
 //Melody:
-SILENT_NOTE, C(6), B(5), A(5), B(5), A(5), E(5), A(5), SILENT_NOTE, C(6), B(5), SILENT_NOTE, B(5), SILENT_NOTE, B(5), A(5), SILENT_NOTE, A(5), SILENT_NOTE, SILENT_NOTE, C(6), B(5), A(5), B(5), A(5), E(5), A(5), SILENT_NOTE, C(6), B(5), A(5), B(5), SILENT_NOTE, A(5), SILENT_NOTE 
+SILENT_NOTE, C(6), B(5), A(5), B(5), A(5), E(5), A(5), SILENT_NOTE, C(6), B(5), SILENT_NOTE, B(5), SILENT_NOTE, B(5), A(5), SILENT_NOTE, A(5), SILENT_NOTE, SILENT_NOTE, C(6), B(5), A(5), B(5), A(5), E(5), A(5), SILENT_NOTE, C(6), B(5), A(5), B(5), SILENT_NOTE, A(5), SILENT_NOTE
 //Time:
 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 30, 220, 30, 220, 250, 30, 220, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250
 ```
