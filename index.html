@@ -13,18 +13,63 @@
     <div id="convertBox" align="center"></div>
     <script src="js/converter.js"></script>
     <script type="text/babel">
+      // var PramBox = React.createClass({
+      //   getInitialState: function() {
+      //     return {"value": this.props.initialValue};
+      //   },
+      //   handleChange: function() {
+      //     this.setState(value: event.target.value)
+      //   },
+      //   render: function() {
+      //     return (
+      //         <div className="input-group">
+      //           <span className="input-group-addon">this.props.addon</span>
+      //           <input type="text" className="form-control" value={this.state.value} onChange={this.handleChange}/>
+      //         </div>
+      //     );
+      //   }
+      // });
+
       var Converter = React.createClass({
-        getInitialState: function () {
-          return {"melody": 'Hello!', "time": "World!"};
+        getInitialState: function() {
+          return {
+            "time": this.props.initialTime,
+            "silent": this.props.initialSilent,
+            "input": "",
+            "output": {},
+            "timeLen": parseInt(this.props.initialTime),
+            "silentLen": parseInt(this.props.initialSilent)
+          };
         },
 
         convert: convert,
 
-        handleChange: function () {
-          this.setState({value: event.target.value});
-          this.setState(function(state) {
-            return this.convert(state.value);
-          });
+        updateOutput: function() {
+          var _output = this.convert(this.state.input, this.state.timeLen, this.state.silentLen);
+          this.setState({output: _output});
+        },
+
+        handleInputChange: function() {
+          console.log(event.target.value);
+          this.setState({input: event.target.value});
+          console.log(this.state);
+          this.updateOutput();
+        },
+        handleTimeChange: function() {
+          var _value = event.target.value;
+          this.setState({time: _value});
+          if (!isNaN(_value)) {
+            this.setState({timeLen: parseInt(_value)});
+          }
+          this.updateOutput();
+        },
+        handleSilentChange: function() {
+          var _value = event.target.value;
+          this.setState({silent: _value});
+          if (!isNaN(_value)) {
+            this.setState({silentLen: parseInt(_value)});
+          }
+          this.updateOutput();
         },
 
         textAreaStyle: {
@@ -37,14 +82,28 @@
               <h1> Orangutan Buzzer Converter </h1>
               <div className="row">
                 <div className="col-md-10 col-md-offset-1">
-                  <textarea className="form-control" style={this.textAreaStyle} rows="10" placeholder="Enter notes here" value={this.state.value} onChange={this.handleChange} />
+                  <textarea className="form-control" style={this.textAreaStyle} rows="10" placeholder="Enter notes here" value={this.state.input} onChange={this.handleInputChange} />
+                  <div className="row">
+                    <div className="col-sm-3">
+                        <div className="input-group">
+                          <span className="input-group-addon">Time</span>
+                          <input type="text" className="form-control" value={this.state.time} onChange={this.handleTimeChange}/>
+                        </div>
+                    </div>
+                    <div className="col-sm-4 col-sm-offset-2">
+                      <div className="input-group">
+                        <span className="input-group-addon">Silent Length</span>
+                        <input type="text" className="form-control" value={this.state.silent} onChange={this.handleSilentChange}/>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col-md-10 col-md-offset-1">
                   <pre className="text-left">
-                  //Melody:<br/>{this.state.melody} <br/>
-                  //Time:<br/>{this.state.time}
+                  //Melody:<br/>{this.state.output.melody} <br/>
+                  //Time:<br/>{this.state.output.time}
                   </pre>
                 </div>
               </div>
@@ -54,7 +113,7 @@
       });
 
       ReactDOM.render(
-        <Converter />,
+        <Converter initialTime="250" initialSilent="30" />,
         document.getElementById('convertBox')
       );
     </script>
