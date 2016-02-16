@@ -51,25 +51,22 @@
 
         handleInputChange: function() {
           console.log(event.target.value);
-          this.setState({input: event.target.value});
+          this.setState({input: event.target.value}, function () {this.updateOutput()});
           console.log(this.state);
-          this.updateOutput();
         },
         handleTimeChange: function() {
           var _value = event.target.value;
           this.setState({time: _value});
           if (!isNaN(_value)) {
-            this.setState({timeLen: parseInt(_value)});
+            this.setState({timeLen: parseInt(_value)}, function () {this.updateOutput()});
           }
-          this.updateOutput();
         },
         handleSilentChange: function() {
           var _value = event.target.value;
           this.setState({silent: _value});
           if (!isNaN(_value)) {
-            this.setState({silentLen: parseInt(_value)});
+            this.setState({silentLen: parseInt(_value)}, function () {this.updateOutput()});
           }
-          this.updateOutput();
         },
 
         textAreaStyle: {
