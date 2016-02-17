@@ -9,7 +9,7 @@ var convert = function (txt, noteLen, silentLen) {
 
 var convertFromList = function (notes, noteLen, silentLen) {
     var melody = [];
-    var time = [];
+    var duration = [];
     if (noteLen) {
         var NOTE_LEN = noteLen;
     } else {
@@ -71,14 +71,14 @@ var convertFromList = function (notes, noteLen, silentLen) {
 
             if (note.name === NOTE_MAP["0"] || note.name !== prevNote.name || note.octave !== prevNote.octave) {
                 melody = melody.concat([note.string]);
-                time = time.concat([NOTE_LEN * note.tie]);
+                duration = duration.concat([NOTE_LEN * note.tie]);
             } else {
                 melody = melody.concat([NOTE_MAP["0"], note.string]);
-                time = time.concat([SILENT_LEN, NOTE_LEN * note.tie - SILENT_LEN]);
+                duration = duration.concat([SILENT_LEN, NOTE_LEN * note.tie - SILENT_LEN]);
             }
         }
 
         prevNote = note;
     }
-    return({"melody": melody.join(", "), "time": time.join(", ")});
+    return({"melody": melody.join(", "), "duration": duration.join(", ")});
 };
