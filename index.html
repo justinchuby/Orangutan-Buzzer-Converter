@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
   <body>
+    <h4 href="https://github.com/justinchuby/orangutan-buzz/">Back to the Github repo</h4>
     <div id="convertBox" align="center"></div>
     <script src="js/converter.js"></script>
     <script type="text/babel">
@@ -33,11 +34,11 @@
       var Converter = React.createClass({
         getInitialState: function() {
           return {
-            "time": this.props.initialTime,
+            "duration": this.props.initialDuration,
             "silent": this.props.initialSilent,
             "input": "",
             "output": {},
-            "timeLen": parseInt(this.props.initialTime),
+            "durationLen": parseInt(this.props.initialDuration),
             "silentLen": parseInt(this.props.initialSilent)
           };
         },
@@ -45,7 +46,7 @@
         convert: convert,
 
         updateOutput: function() {
-          var _output = this.convert(this.state.input, this.state.timeLen, this.state.silentLen);
+          var _output = this.convert(this.state.input, this.state.durationLen, this.state.silentLen);
           this.setState({output: _output});
         },
 
@@ -54,11 +55,11 @@
           this.setState({input: event.target.value}, function () {this.updateOutput()});
           console.log(this.state);
         },
-        handleTimeChange: function() {
+        handleDurationChange: function() {
           var _value = event.target.value;
-          this.setState({time: _value});
+          this.setState({duration: _value});
           if (!isNaN(_value)) {
-            this.setState({timeLen: parseInt(_value)}, function () {this.updateOutput()});
+            this.setState({durationLen: parseInt(_value)}, function () {this.updateOutput()});
           }
         },
         handleSilentChange: function() {
@@ -87,8 +88,8 @@
                   <div className="row">
                     <div className="col-sm-3">
                         <div className="input-group">
-                          <span className="input-group-addon">Time</span>
-                          <input type="text" className="form-control" value={this.state.time} onChange={this.handleTimeChange}/>
+                          <span className="input-group-addon">Duration</span>
+                          <input type="text" className="form-control" value={this.state.duration} onChange={this.handleDurationChange}/>
                         </div>
                     </div>
                     <div className="col-sm-4 col-sm-offset-2">
@@ -104,7 +105,7 @@
                 <div className="col-md-10 col-md-offset-1">
                   <pre className="text-left">
                   //Melody:<br/>{this.state.output.melody} <br/>
-                  //Time:<br/>{this.state.output.time}
+                  //Duration:<br/>{this.state.output.duration}
                   </pre>
                 </div>
               </div>
@@ -114,7 +115,7 @@
       });
 
       ReactDOM.render(
-        <Converter initialTime="250" initialSilent="30" />,
+        <Converter initialDuration="250" initialSilent="30" />,
         document.getElementById('convertBox')
       );
     </script>
