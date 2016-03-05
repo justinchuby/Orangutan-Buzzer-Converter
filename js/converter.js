@@ -24,13 +24,13 @@ var convertFromList = function (notes, noteLen, silentLen) {
     var NOTE_RE = /(\d)(\d?)(\-*)/;
     var NOTE_MAP = {
         "0": "SILENT_NOTE",
-        "1": "C",
-        "2": "D",
-        "3": "E",
-        "4": "F",
-        "5": "G",
-        "6": "A",
-        "7": "B",
+        "1": "NOTE_C",
+        "2": "NOTE_D",
+        "3": "NOTE_E",
+        "4": "NOTE_F",
+        "5": "NOTE_G",
+        "6": "NOTE_A",
+        "7": "NOTE_B",
     };
     var prevNote = {};
 
